@@ -1,0 +1,51 @@
+.user-list-container {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+  padding: 2rem 1.5rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+}-container {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+  padding: 2rem 1.5rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-list-container h2 {
+  color: #3b82f6;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.user-table th, .user-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+.user-table th {
+  background: #f1f5f9;
+  color: #6366f1;
+}
+
+@media (max-width: 600px) {
+  .user-list-container {
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+  }
+  .user-table th, .user-table td {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+}

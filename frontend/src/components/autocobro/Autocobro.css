@@ -1,0 +1,111 @@
+.autocobro-container {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+  padding: 2rem 1.5rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.autocobro-container h2 {
+  color: #3b82f6;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.scanner-section {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.scanner-section input {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  font-size: 1rem;
+}
+.scanner-section button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.scanner-section button:hover {
+  background: #3b82f6;
+}
+.cart-list {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.cart-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cart-list th, .cart-list td {
+  padding: 0.7rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+}
+.product-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+.qty {
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+.summary-section {
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+.payment-options {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+  color: black;
+}
+.finish-btn {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+}
+.finish-btn:hover {
+  background: #16a34a;
+}
+@media (max-width: 600px) {
+  .autocobro-container {
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+  }
+  .scanner-section input,
+  .scanner-section button,
+  .finish-btn {
+    font-size: 1rem;
+    padding: 0.7rem;
+  }
+  .cart-list th, .cart-list td {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .product-img {
+    width: 36px;
+    height: 36px;
+  }
+}

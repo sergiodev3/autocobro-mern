@@ -1,0 +1,26 @@
+.transaction-list-container {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+}
+.transaction-list-container h2 {
+  color: #3b82f6;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.transaction-table th, .transaction-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+.transaction-table th {
+  background: #f1f5f9;
+  color: #6366f1;
+}
