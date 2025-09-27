@@ -1,9 +1,62 @@
 # 🛒 AutoCobro MERN - Sistema de Autocobro Inteligente
 
+> ⚠️ **PROYECTO EN DESARROLLO** - Este proyecto está actualmente en fase de desarrollo. Algunas funcionalidades están pendientes de i## 🔧 Configuración Avanzada
+
+### 🔐 Seguridad (Próximamente)
+```env
+# Configuración JWT (por implementar)
+JWT_SECRET=tu_jwt_secret_muy_seguro
+JWT_EXPIRES_IN=7d
+
+# Hash de contraseñas (por implementar)
+BCRYPT_ROUNDS=12
+```
+
+### Variables de Entorno Completas
+
+**Backend (.env)**:
+```env
+# Base de datos
+MONGODB_URI=mongodb://localhost:27017/autocobro-db
+# O MongoDB Atlas:
+# MONGODB_URI=mongodb+srv://usuario:contraseña@cluster.mongodb.net/autocobro-db
+
+# Servidor
+PORT=5000
+NODE_ENV=development
+
+# Seguridad (por implementar)
+JWT_SECRET=tu_jwt_secret_muy_seguro_aqui
+JWT_EXPIRES_IN=7d
+BCRYPT_ROUNDS=12
+
+# Email (opcional, por implementar)
+EMAIL_USER=tu_email@gmail.com
+EMAIL_PASS=tu_app_password
+```
+
+**Frontend (.env)**:
+```env
+# API del backend
+VITE_API_URL=http://localhost:5000/api
+
+# Información de la app
+VITE_APP_NAME=AutoCobro App
+VITE_APP_VERSION=1.0.0
+
+# Configuración de desarrollo
+VITE_DEBUG_MODE=true
+
+# Para producción:
+# VITE_API_URL=https://tu-api-produccion.com/api
+# VITE_DEBUG_MODE=false
+```ación y mejoras.
+
 Un sistema completo de autocobro desarrollado con **MERN Stack** (MongoDB, Express.js, React, Node.js) que permite a los usuarios escanear productos, realizar compras y procesar pagos de forma autónoma.
 
 ## 🚀 Características Principales
 
+### ✅ Funcionalidades Implementadas
 - **💳 Sistema de Autocobro**: Escaneo de códigos de barras y procesamiento de compras
 - **📦 Gestión de Productos**: CRUD completo con imágenes y búsqueda
 - **👥 Gestión de Usuarios**: Registro, autenticación y perfiles
@@ -11,6 +64,21 @@ Un sistema completo de autocobro desarrollado con **MERN Stack** (MongoDB, Expre
 - **🧾 Historial de Transacciones**: Seguimiento completo de ventas
 - **📱 Diseño Responsivo**: Optimizado para desktop, tablet y móvil
 - **🔍 Búsqueda Inteligente**: Filtros por nombre y código de barras
+
+### 🚧 En Desarrollo
+#### Backend
+- **🔐 Seguridad**: Implementar hash de contraseñas con bcrypt
+- **🔑 JWT**: Sistema de autenticación con tokens
+- **✅ Validaciones**: Middleware de validación de datos
+- **📧 Email**: Sistema de notificaciones por email
+
+#### Frontend
+- **🎨 UI/UX**: Mejoras en diseño y experiencia de usuario
+- **🔄 Estado Global**: Implementar Context API o Redux
+- **📷 Cámara**: Integración real con cámara para códigos de barras
+- **💳 Pagos**: Integración con pasarelas de pago reales
+- **🖨️ Tickets**: Sistema de impresión de tickets
+- **📊 Gráficos**: Charts y visualizaciones de datos
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -61,6 +129,19 @@ MONGODB_URI=mongodb://localhost:27017/autocobro-app
 ```bash
 cd ../frontend
 npm install
+```
+
+Crear archivo `.env` en la carpeta `frontend`:
+```env
+# URL del API del backend
+VITE_API_URL=http://localhost:5000/api
+
+# Configuración de la aplicación
+VITE_APP_NAME=AutoCobro App
+VITE_APP_VERSION=1.0.0
+
+# Para producción (cambiar cuando se despliegue):
+# VITE_API_URL=https://tu-api-en-produccion.com/api
 ```
 
 ### 4. Ejecutar la Aplicación
