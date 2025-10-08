@@ -12,7 +12,8 @@ const ProductAdmin: React.FC = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
   const [barcode, setBarcode] = useState("");
   const [loading, setLoading] = useState(false);
   
@@ -55,9 +56,23 @@ const ProductAdmin: React.FC = () => {
     setName("");
     setPrice(0);
     setDescription("");
-    setImage("");
+    setImageFile(null);
+    setImagePreview("");
     setBarcode("");
     setEditingProduct(null);
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImageFile(file);
+      // Crear preview de la imagen
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -69,13 +84,23 @@ const ProductAdmin: React.FC = () => {
 
     try {
       setLoading(true);
-      const productData = { name, price, description, image, barcode };
+      
+      // Crear FormData para enviar archivo
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('price', price.toString());
+      formData.append('description', description);
+      formData.append('barcode', barcode);
+      
+      if (imageFile) {
+        formData.append('image', imageFile);
+      }
 
       if (editingProduct) {
-        await productService.update(editingProduct._id!, productData);
+        await productService.updateWithFile(editingProduct._id!, formData);
         alert('Producto actualizado exitosamente');
       } else {
-        await productService.create(productData);
+        await productService.createWithFile(formData);
         alert('Producto creado exitosamente');
       }
 
@@ -95,7 +120,10 @@ const ProductAdmin: React.FC = () => {
     setName(product.name);
     setPrice(product.price);
     setDescription(product.description || "");
-    setImage(product.image || "");
+    // Mostrar imagen actual como preview si existe
+    if (product.image) {
+      setImagePreview(`http://localhost:5000${product.image}`);
+    }
     setBarcode(product.barcode);
     setShowForm(true);
   };
@@ -173,13 +201,31 @@ const ProductAdmin: React.FC = () => {
               required
             />
             <input
-              type="url"
-              placeholder="URL de la imagen"
-              value={image}
-              onChange={e => setImage(e.target.value)}
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
               disabled={loading}
+              style={{ fontSize: '14px' }}
             />
           </div>
+          
+          {/* Preview de la imagen */}
+          {imagePreview && (
+            <div className="image-preview">
+              <img 
+                src={imagePreview} 
+                alt="Preview" 
+                style={{ 
+                  maxWidth: '200px', 
+                  maxHeight: '200px', 
+                  objectFit: 'cover',
+                  borderRadius: '8px',
+                  border: '2px solid #ddd'
+                }} 
+              />
+            </div>
+          )}
+          
           <textarea
             placeholder="Descripción (opcional)"
             value={description}
@@ -202,7 +248,10 @@ const ProductAdmin: React.FC = () => {
             <div key={product._id} className="product-card">
               <div className="product-image">
                 {product.image ? (
-                  <img src={product.image} alt={product.name} />
+                  <img 
+                    src={product.image.startsWith('http') ? product.image : `http://localhost:5000${product.image}`} 
+                    alt={product.name} 
+                  />
                 ) : (
                   <div className="no-image">
                     <span>📦</span>

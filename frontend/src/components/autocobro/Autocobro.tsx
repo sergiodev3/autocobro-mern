@@ -49,7 +49,9 @@ const Autocobro: React.FC = () => {
               id: product._id,
               name: product.name,
               price: product.price,
-              image: product.image || `https://dummyimage.com/80x80/6366f1/fff&text=${product.name.charAt(0)}`,
+              image: product.image && !product.image.startsWith('http') 
+                ? `http://localhost:5000${product.image}` 
+                : product.image || `https://dummyimage.com/80x80/6366f1/fff&text=${product.name.charAt(0)}`,
               quantity: 1,
               barcode: product.barcode
             }];

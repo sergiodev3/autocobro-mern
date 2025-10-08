@@ -25,8 +25,20 @@ export const productService = {
   // Crear nuevo producto
   create: (product: Omit<Product, '_id'>) => api.post('/products', product),
   
+  // Crear producto con archivo
+  createWithFile: (formData: FormData) => 
+    api.post('/products', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }),
+  
   // Actualizar producto
   update: (id: string, product: Partial<Product>) => api.put(`/products/${id}`, product),
+  
+  // Actualizar producto con archivo
+  updateWithFile: (id: string, formData: FormData) => 
+    api.put(`/products/${id}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }),
   
   // Eliminar producto
   delete: (id: string) => api.delete(`/products/${id}`),

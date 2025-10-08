@@ -292,4 +292,4 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ---
 
-⭐ **¡Si te gusta este proyecto, no olvides darle una estrella!** ⭐
+⭐ **¡Si te gusta este proyecto, no olvides darle una estrella!** ⭐ 
