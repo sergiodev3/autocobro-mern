@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { productService } from "../../services/api";
 import type { Product } from "../../types";
+import "../common/AdminLayout.css";
 import "./ProductAdmin.css";
 
-const ProductAdmin: React.FC = () => {
+interface ProductAdminProps {
+  onBack: () => void;
+}
+
+const ProductAdmin: React.FC<ProductAdminProps> = ({ onBack }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -145,9 +150,12 @@ const ProductAdmin: React.FC = () => {
   };
 
   return (
-    <div className="product-admin-container">
+    <div className="admin-container">
       <div className="admin-header">
-        <h2>Administrar Productos ({products.length})</h2>
+        <button onClick={onBack} className="back-btn">
+          ← Volver al Dashboard
+        </button>
+        <h2 className="admin-title">Administrar Productos ({products.length})</h2>
         <button 
           className="btn-primary"
           onClick={() => setShowForm(!showForm)}

@@ -2,17 +2,45 @@
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
-  padding: 2rem 1.5rem;
-  max-width: 500px;
+  padding: 2rem;
+  max-width: 800px;
   margin: 2rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.autocobro-container h2 {
+.autocobro-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.autocobro-header h2 {
   color: #3b82f6;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  flex: 1;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, #6b7280, #9ca3af);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #4b5563, #6b7280);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(107, 114, 128, 0.4);
 }
 .scanner-section {
   display: flex;
@@ -59,9 +87,67 @@
   border-radius: 0.5rem;
   object-fit: cover;
 }
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.qty-btn {
+  background: #6366f1;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:hover {
+  background: #4f46e5;
+  transform: scale(1.1);
+}
+
+.minus-btn:hover {
+  background: #ef4444;
+}
+
+.plus-btn:hover {
+  background: #22c55e;
+}
+
 .qty {
   margin: 0 0.5rem;
   font-weight: bold;
+  min-width: 30px;
+  text-align: center;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  transform: scale(1.1);
 }
 .summary-section {
   width: 100%;

@@ -1,13 +1,5 @@
 
-.product-admin-container {
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 2rem auto;
-  width: 95%;
-}
+/* Específico para ProductAdmin - se combina con AdminLayout.css */
 
 .admin-header {
   display: flex;
@@ -16,6 +8,25 @@
   margin-bottom: 2rem;
   border-bottom: 2px solid #f1f5f9;
   padding-bottom: 1rem;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, #6b7280, #9ca3af);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #4b5563, #6b7280);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(107, 114, 128, 0.4);
 }
 
 .admin-header h2 {
@@ -43,7 +54,7 @@
 }
 
 .search-input {
-  width: 100%;
+  width: 80%;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 2px solid #e5e7eb;
@@ -167,6 +178,52 @@
   font-size: 1.3rem;
   font-weight: bold;
   margin: 0.5rem 0;
+}
+
+/* Estilos para input de imagen */
+input[type="file"] {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border: 2px dashed #cbd5e1;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="file"]:hover {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.image-preview {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+}
+
+.image-preview img {
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-preview img:hover {
+  transform: scale(1.05);
 }
 
 .product-description {

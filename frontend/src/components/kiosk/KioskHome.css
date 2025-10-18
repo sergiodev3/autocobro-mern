@@ -1,0 +1,222 @@
+/* Kiosk Home - Diseño optimizado para pantalla táctil */
+
+.kiosk-home {
+  min-height: 100vh;
+  min-width: 150vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+}
+
+.kiosk-container {
+  max-width: 2400px;
+  width: 98%;
+  text-align: center;
+}
+
+/* Header */
+.kiosk-header {
+  margin-bottom: 60px;
+}
+
+.kiosk-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.kiosk-title span {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.kiosk-subtitle {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Options Grid */
+.kiosk-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.kiosk-option {
+  background: white;
+  border: none;
+  border-radius: 20px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  min-height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kiosk-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  transition: height 0.3s ease;
+}
+
+.kiosk-option.primary::before {
+  background: linear-gradient(90deg, #4ade80, #22c55e);
+}
+
+.kiosk-option.secondary::before {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.kiosk-option.accent::before {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.kiosk-option.admin::before {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.kiosk-option:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.kiosk-option:hover::before {
+  height: 12px;
+}
+
+.kiosk-option:active {
+  transform: translateY(-4px);
+}
+
+.option-icon {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+.option-content h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #1f2937;
+}
+
+.option-content p {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Footer Info */
+.kiosk-footer {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .kiosk-title {
+    font-size: 2.5rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .kiosk-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .kiosk-options {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .kiosk-option {
+    padding: 30px 20px;
+    min-height: 200px;
+  }
+  
+  .option-icon {
+    font-size: 3rem;
+  }
+  
+  .option-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .info-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .info-card {
+    font-size: 0.9rem;
+  }
+}
+
+/* Touch-friendly enhancements */
+@media (pointer: coarse) {
+  .kiosk-option {
+    min-height: 280px;
+    padding: 50px 40px;
+  }
+  
+  .option-icon {
+    font-size: 4.5rem;
+  }
+  
+  .option-content h2 {
+    font-size: 2rem;
+  }
+  
+  .option-content p {
+    font-size: 1.2rem;
+  }
+}

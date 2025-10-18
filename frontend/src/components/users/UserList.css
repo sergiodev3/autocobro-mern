@@ -2,27 +2,62 @@
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
-  padding: 2rem 1.5rem;
-  max-width: 700px;
-  margin: 2rem auto;
-  display: flex;
-  flex-direction: column;  
-  align-items: center;
-}-container {
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
-  padding: 2rem 1.5rem;
-  max-width: 400px;
-  margin: 2rem auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 2rem;
+  max-width: 100%;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
 }
-.user-list-container h2 {
+.user-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.user-list-header h2 {
   color: #3b82f6;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  flex: 1;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, #6b7280, #9ca3af);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #4b5563, #6b7280);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(107, 114, 128, 0.4);
+}
+
+.role-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.role-badge.admin {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.role-badge.client {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
 }
 .user-table {
   width: 100%;

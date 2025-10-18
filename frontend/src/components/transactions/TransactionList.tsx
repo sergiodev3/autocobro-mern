@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { transactionService } from "../../services/api";
 import type { Transaction } from "../../types";
+import "../common/AdminLayout.css";
 import "./TransactionList.css";
 
-const TransactionList: React.FC = () => {
+interface TransactionListProps {
+  onBack: () => void;
+}
+
+const TransactionList: React.FC<TransactionListProps> = ({ onBack }) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -25,34 +30,56 @@ const TransactionList: React.FC = () => {
   };
 
   return (
-    <div className="transaction-list-container">
-      <h2>Historial de Transacciones</h2>
-      {loading ? (
-        <p>Cargando transacciones...</p>
-      ) : (
-        <table className="transaction-table">
-          <thead>
-            <tr>
-              <th>Usuario</th>
-              <th>Total</th>
-              <th>Pago</th>
-              <th>Productos</th>
-              <th>Fecha</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map(t => (
-              <tr key={t._id}>
-                <td>{t.userId}</td>
-                <td>${t.total}</td>
-                <td>{t.paymentMethod}</td>
-                <td>{t.products.length} items</td>
-                <td>{t.date ? new Date(t.date).toLocaleDateString() : 'N/A'}</td>
+    <div className="admin-container">
+      <div className="admin-header">
+        <button onClick={onBack} className="back-btn">
+          ← Volver al Dashboard
+        </button>
+        <h2 className="admin-title">Historial de Transacciones ({transactions.length})</h2>
+        <div></div> {/* Spacer for flex layout */}
+      </div>
+      <div className="admin-content">
+        {loading ? (
+          <div className="loading-message">Cargando transacciones...</div>
+        ) : transactions.length === 0 ? (
+          <div className="empty-message">No hay transacciones registradas</div>
+        ) : (
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Total</th>
+                <th>Método de Pago</th>
+                <th>Productos</th>
+                <th>Fecha</th>
+                <th>Estado</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {transactions.map(t => (
+                <tr key={t._id}>
+                  <td>{t.userId || 'Usuario Anónimo'}</td>
+                  <td>
+                    <span className="amount">${t.total.toFixed(2)}</span>
+                  </td>
+                  <td>
+                    <span className={`payment-badge ${t.paymentMethod}`}>
+                      {t.paymentMethod === 'cash' ? 'Efectivo' : 'Tarjeta'}
+                    </span>
+                  </td>
+                  <td>
+                    <span className="product-count">{t.products.length} items</span>
+                  </td>
+                  <td>{t.date ? new Date(t.date).toLocaleDateString() : 'N/A'}</td>
+                  <td>
+                    <span className="status-badge completed">Completada</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 };

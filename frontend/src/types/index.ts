@@ -15,6 +15,13 @@ export interface User {
   name: string;
   email: string;
   password?: string;
+  role: 'admin' | 'client';
+  points: number;
+  cashback: number;
+  isActive: boolean;
+  lastPurchase?: string;
+  totalPurchases: number;
+  totalSpent: number;
   createdAt?: string;
   updatedAt?: string;
 }

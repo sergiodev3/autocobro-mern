@@ -9,7 +9,11 @@ interface CurrentUser {
   email: string;
 }
 
-const Autocobro: React.FC = () => {
+interface AutocobroProps {
+  onBack: () => void;
+}
+
+const Autocobro: React.FC<AutocobroProps> = ({ onBack }) => {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
   const [barcode, setBarcode] = useState("");
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -121,7 +125,12 @@ Productos: ${cart.length}
 
   return (
     <div className="autocobro-container">
-      <h2>Bienvenido, {currentUser?.email || currentUser?.name || 'Usuario'}</h2>
+      <div className="autocobro-header">
+        <button onClick={onBack} className="back-btn" title="Volver al inicio">
+          ← Volver
+        </button>
+        <h2>Bienvenido, {currentUser?.email || currentUser?.name || 'Usuario'}</h2>
+      </div>
       <div className="scanner-section">
         <input
           type="text"
@@ -154,14 +163,16 @@ Productos: ${cart.length}
                   <td><img src={item.image} alt={item.name} className="product-img" /></td>
                   <td>{item.name}</td>
                   <td>
-                    <button onClick={() => handleQuantity(item.id, -1)} title="Disminuir">-</button>
-                    <span className="qty">{item.quantity}</span>
-                    <button onClick={() => handleQuantity(item.id, 1)} title="Aumentar">+</button>
+                    <div className="quantity-controls">
+                      <button onClick={() => handleQuantity(item.id, -1)} className="qty-btn minus-btn" title="Disminuir">-</button>
+                      <span className="qty">{item.quantity}</span>
+                      <button onClick={() => handleQuantity(item.id, 1)} className="qty-btn plus-btn" title="Aumentar">+</button>
+                    </div>
                   </td>
                   <td>${item.price}</td>
                   <td>${item.price * item.quantity}</td>
                   <td>
-                    <button onClick={() => handleRemove(item.id)} title="Eliminar">
+                    <button onClick={() => handleRemove(item.id)} className="delete-btn" title="Eliminar">
                       <span role="img" aria-label="delete">🗑️</span>
                     </button>
                   </td>
